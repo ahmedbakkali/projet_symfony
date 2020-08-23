@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ asset('back/dropzone.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('back/summernote.css') }}">
+        <link rel="stylesheet" href="{{ asset('back/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{asset ('fontawesome/css/font-awesome.min.css')}}">
+    </head>
+    <body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">E-commerce</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#"> <i class="fa fa-home"></i> Accueil <span class="sr-only">(current)</span></a></li>
+        <li><a href="{{ path('admin_prd_index') }}">produits</a></li>
+         
+        
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        <li> <a href=""><i class="fa fa-cog"></i> Connecté tant que: {{ app.user.username }}</a></li>
+        <li><a href="{{ path('fos_user_security_logout') }}"> <i class="fa fa-sign-out"></i> {{ 'layout.logout' | trans({}, 'FOSUserBundle') }}</a></li>
+        {% else %}
+        <li><a href="{{ path('fos_user_security_login') }}"> <i class="fa fa-sign-in"></i> {{ 'layout.login' | trans({}, 'FOSUserBundle') }}</a></li>
+        <li><a href="{{ path('fos_user_registration_register') }}"> <i class="fa fa-user"></i> {{ 'layout.register' | trans({}, 'FOSUserBundle') }}</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+        <div class="container-fluid">
+            <row>
+                <div class="col-md-6">
+                    {% block breadcrumb %}{% endblock %}
+                </div>
+                <div class="col-md-6" align="right">
+                  <select name="accesRapide" id="">
+                    <option value=""> Nouveau Produit</option>
+                    <option value=""> Nouveau Catégorie</option>  
+                  </select>  
+                </div>
+            </row>
+            <div class="row">
+                <div class="col-md-2">
+                 <ul class="list-group ">
+                     <li class="list-group-item"><a href="">Taleau de bord</a></li>
+                     <li class="list-group-item">Catégories</li>
+    <li class="list-group-item"><a href="{{ path('admin_category_index') }}">Liste des catégories</a></li>
+                     <li class="list-group-item"><a href="{{ path('admin_category_new') }}">Nouvelle catégorie</a></li>
+                     <li class="list-group-item">Produits</li>
+                     <li class="list-group-item"><a href="{{ path('admin_prd_index') }}">Liste des produits</a></li>
+                      <li class="list-group-item"><a href="{{ path('admin_prd_new') }}">Nouvelle  produit</a></li>
+                       <li class="list-group-item">Commandes</li>
+                        <li class="list-group-item"><a href="{{ path('admin_orders_index') }}">Liste des commandes</a></li>
+                      <li class="list-group-item">Customer</li>
+                      <li class="list-group-item"><a href="{{ path('admin_customer_index') }}">Liste des clients</a>
+                      </li>
+                      <li class="list-group-item"><a href="{{ path('admin_customer_new') }}">Nouveau Customers</a>
+                      </li>
+                    
+                 </ul>
+                      
+            </div>
+                <div class="col-md-9">
+                   {% block content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+        
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

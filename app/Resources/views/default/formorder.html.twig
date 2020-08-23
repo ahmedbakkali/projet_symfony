@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    
+    {% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('back/bootstrap.css') }}">
+    {% endblock %}
+  <div class="col-md-8">
+                <h5 class="text-center">forme de commande</h5>
+    <hr>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <form name="eshop_shopbundle_orders" method="post" class="form-horizontal">
+            
+            <div class="form-group">
+                <label class="col-sm-2 control-label required" for="eshop_shopbundle_orders_name">Nom</label>
+                <div class="col-sm-10">
+                    <input type="text" id="eshop_shopbundle_orders_name" name="eshop_shopbundle_orders[name]" required="required" class="form-control" value="" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label required" for="eshop_shopbundle_orders_email">Email</label>
+                <div class="col-sm-10">
+                    <input type="email" id="eshop_shopbundle_orders_email" name="eshop_shopbundle_orders[email]" required="required" class="form-control" value="" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label required" for="eshop_shopbundle_orders_phone">Tel</label>
+                <div class="col-sm-10">
+                    <input type="text" id="eshop_shopbundle_orders_phone" name="eshop_shopbundle_orders[phone]" required="required" class="form-control" value="" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label required" for="eshop_shopbundle_orders_address">Adresse</label>
+                <div class="col-sm-10">
+                    <input type="text" id="eshop_shopbundle_orders_address" name="eshop_shopbundle_orders[address]" required="required" class="form-control" value="" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="eshop_shopbundle_orders_comment">Commentaire</label>
+                <div class="col-sm-10">
+                    <textarea id="eshop_shopbundle_orders_comment" name="eshop_shopbundle_orders[comment]" class="form-control"></textarea>
+                </div>
+            </div>
+            <input type="hidden" id="eshop_shopbundle_orders__token" name="eshop_shopbundle_orders[_token]" value="_Mg8u1GR__KzNhBsadUayjs4APBNChpiuWgTW9IQPy8" />
+    
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10 text-right">
+                    <button type="submit" class="btn btn-success">Soumettre</button>
+                </div>
+            </div>
+
+{% endblock %}

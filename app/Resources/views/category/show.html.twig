@@ -1,0 +1,62 @@
+{% extends 'back.html.twig' %}
+
+{% block content %}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{ category.libelle }}</h3>
+    </div>
+    <div class="panel-body">
+        <h5>{{ category.slug }}</h5>
+        <p>{{ category.description }}</p>
+   <small>
+      crée le : {{ category.createAt | date('d/m/Y H:i:s') }} 
+      crée le : {{ category.updateAt | date('d/m/Y H:i:s') }}
+
+   </small>
+
+
+
+    </div>
+</div>
+
+    <h3>Category</h3>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ category.id }}</td>
+            </tr>
+            <tr>
+                <th>Libelle</th>
+                <td>{{ category.libelle }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ category.description }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ category.slug }}</td>
+            </tr>
+            <tr>
+                <th>Createat</th>
+                <td>{% if category.createAt %}{{ category.createAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updateat</th>
+                <td>{% if category.updateAt %}{{ category.updateAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+       
+            <a class ="btn btn-primary" href="{{ path('admin_category_index') }}">Retour</a>
+     
+        
+            <a class ="btn btn-default" href="{{ path('admin_category_edit', { 'id': category.id }) }}">Editer</a>
+     
+    </ul>
+{% endblock %}

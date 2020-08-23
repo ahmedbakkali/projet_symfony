@@ -1,0 +1,34 @@
+{% extends 'back.html.twig' %}
+
+{% block content %}
+    <h4>Liste des clients</h4>
+<a class="btn btn-primary" href="{{ path('admin_customer_new') }}">Créer un nouveau client</a>
+    <table class="table">
+        <thead>
+            <tr> 
+                <th>Id</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Registration date</th>
+                <th>Orders</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for customer in customers %}
+            <tr>
+                <td><a href="{{ path('admin_customer_show', { 'id': customer.id }) }}">{{ customer.id }}</a></td>
+                <td>{{ customer.username }}</td>
+                <td>{{ customer.email }}</td>
+                <td>{{ customer.registrationDate|date('Y-m-d') }}</td>
+                <td>{{ customer.orders }}</td>
+                <td>
+                            <a class="btn btn-info" href="{{ path('admin_customer_show', { 'id': customer.id }) }}"><i class="fa fa-search"></i></a>
+                  
+                            <a class="btn btn-warning" href="{{ path('admin_customer_edit', { 'id': customer.id }) }}"><i class="fa fa-edit"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

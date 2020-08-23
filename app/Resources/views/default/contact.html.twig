@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    
+  <div class='container'>
+  	<div class='column'>
+  		<div class='column is-offset-one-quarter is-half'>
+<div class="field">
+    {{ form_label(form.form, null, {'label_attr': {'class': 'label'}}) }}
+    <div class="control">
+    	{{ form_widget(form.form, {'attr': {'class': 'input'}}) }}
+    </div>
+    </div>
+
+
+<div class="field">
+    {{ form_label(form.subject, null, {'label_attr': {'class': 'label'}}) }}
+    <div class="control">
+    	{{ form_widget(form.subject, {'attr': {'class': 'input'}}) }}
+    </div>
+    </div>
+
+
+<div class="field">
+    {{ form_label(form.body, null, {'label_attr': {'class': 'label'}}) }}
+    <div class="control">
+    	{{ form_widget(form.body, {'attr': {'class': 'input'}}) }}
+    </div>
+    </div>
+
+
+<div class="field">
+   <div class="control">
+   	<input class="button is-success" type="submit" value="Envoyer" />
+    </div>
+    </div>
+</div>
+
+{% endblock %}

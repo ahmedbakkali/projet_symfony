@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Registres list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Number</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for registre in registres %}
+            <tr>
+                <td><a href="{{ path('registre_show', { 'id': registre.id }) }}">{{ registre.id }}</a></td>
+                <td>{{ registre.name }}</td>
+                <td>{{ registre.email }}</td>
+                <td>{{ registre.number }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('registre_show', { 'id': registre.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('registre_edit', { 'id': registre.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('registre_new') }}">Create a new registre</a>
+        </li>
+    </ul>
+{% endblock %}

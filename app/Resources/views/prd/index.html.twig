@@ -1,0 +1,30 @@
+
+{% extends 'back.html.twig' %}
+
+{% block content %}
+    <h3>Products list</h3>
+
+ <a class="btn btn-primary" href="{{ path('admin_prd_new') }}">Nouveau Product</a>
+
+    
+<div class="row">
+{% for prd in prds %}
+  <div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="{{ asset('uploads/prd/' ~ prd.image) }}"  alt="">
+      <div class="caption">
+        <h3>{{ prd.name }}</h3>
+        <p>{{ prd.description | slice(0, 80) }} ...</p>
+        <p>
+         <a href="{{ path('admin_prd_show', { 'id': prd.id }) }}" class="btn btn-primary" role="button">Afficher
+            </a> 
+            <a href="{{ path('admin_prd_edit', { 'id': prd.id }) }}" class="btn btn-warning" role="button">Editer
+            </a>
+        </p>
+      </div>
+    </div>
+  </div>
+    {% endfor %}
+      </div>
+{% endblock %}
+

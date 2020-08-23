@@ -1,0 +1,36 @@
+{% extends 'back.html.twig' %}
+
+{% block content %}
+    <h3>Order</h3>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ order.id }}</td>
+            </tr>
+            <tr>
+                <th>Client</th>
+                <td>{{ order.client }}</td>
+            </tr>
+            <tr>
+                <th>User</th>
+                <td>{{ order.user }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ order.price }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ order.date }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_orders_index') }}">Retour</a>
+        </li>
+    </ul>
+{% endblock %}

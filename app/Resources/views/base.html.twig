@@ -1,0 +1,122 @@
+ <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="{{asset ('front/bulma.css')}}">
+        <link rel="stylesheet" href="{{asset ('fontawesome/css/font-awesome.min.css')}}">
+    </head>
+    <body>
+        <nav class="navbar ">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="">
+      <img src="" alt="" width="112" height="28">
+    </a>
+
+    <a class="navbar-item is-hidden-desktop" href="" target="_blank">
+      <span class="icon" style="color: #333;">
+        <i class="fa fa-github"></i>
+      </span>
+    </a>
+
+    <a class="navbar-item is-hidden-desktop" href="https://twitter.com/jgthms" target="_blank">
+      <span class="icon" style="color: #55acee;">
+        <i class="fa fa-twitter"></i>
+      </span>
+    </a>
+
+    <div class="navbar-burger burger" data-target="navMenuExample">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div id="navMenuExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      <a class="navbar-item " href="">
+        
+        Accueil
+      </a>
+
+
+      <a class="navbar-item " href="">
+        
+       Produits
+      </a>
+      <a class="navbar-item " href="{{ path('contact') }}">
+        
+       Contactez nous
+      </a>
+       
+    </div>
+
+    <div class="navbar-end">
+      {% if app.user %}
+      <a class="navbar-item" href="{{ path('fos_user_security_logout') }}">Log Out</a>
+{% else %}
+        <a class="navbar-item" href="{{ path('fos_user_security_login') }}">Log In</a>
+       
+        <a class="navbar-item" href="{{ path('fos_user_registration_register') }}">register</a>
+
+{% endif %}
+
+    </div>
+  </div>
+</nav>
+{% block content %} 
+
+
+   <section class="hero is-primary">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+     Nouveaux des produits
+      </h1>
+      <h2 class="subtitle">
+        Accessoires d'informatique  
+      </h2>
+    </div>
+  </div>
+</section>
+<hr>
+
+<div class="container">
+    <div class="columns">
+      {% for prd in prds %}
+<div class="card column">
+  <div class="card-image">
+    <figure class="image is-4by2">
+      <img src=" {{ asset('uploads/prd/' ~ prd.image ) }}" alt="placeholder image">
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      
+      <div class="media-content">
+        <p class="title is-5">{{ prd.name }}</p>
+        <p class="subtitle is-6">{{ prd.price }}</p>
+      </div>
+    </div>
+<footer class="card-footer">
+    <a href="#" class="card-footer-item button is-primary">BUY NOW</a>
+  </footer>
+    
+  </div>
+</div>
+{% endfor %}
+
+ </div>
+</div>
+
+
+{% endblock %} 
+
+
+
+{% block javascripts %}{% endblock %}
+    </body>
+</html>

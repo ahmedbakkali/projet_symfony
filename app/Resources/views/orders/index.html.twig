@@ -1,0 +1,38 @@
+{% extends 'back.html.twig' %}
+
+{% block content %}
+    <h3>Orders list</h3>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Client</th>
+                <th>User</th>
+                <th>Price</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for order in orders %}
+            <tr>
+                <td><a href="{{ path('admin_orders_show', { 'id': order.id }) }}">{{ order.id }}</a></td>
+                <td>{{ order.client }}</td>
+                <td>{{ order.user }}</td>
+                <td>{{ order.price }}</td>
+                <td>{{ order.date }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_orders_show', { 'id': order.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

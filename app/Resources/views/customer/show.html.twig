@@ -1,0 +1,38 @@
+{% extends 'back.html.twig' %}
+
+{% block content %}
+    <h5>Client</h5>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ customer.id }}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ customer.username }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ customer.email }}</td>
+            </tr>
+            <tr>
+                <th>Registrationdate</th>
+                <td>{{ customer.registrationDate|date('Y-m-d') }}</td>
+            </tr>
+            <tr>
+                <th>Orders</th>
+                <td>{{ customer.orders }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+            <a class="btn btn-primary" href="{{ path('admin_customer_edit', { 'id': customer.id }) }}">Editer</a>
+            <a class="btn btn-default" href="{{ path('admin_customer_index') }}">Retour</a>
+        <li>
+            {{ form_start(delete_form) }}
+                <input class="btn btn-danger" type="submit" value="Supprimer">
+            {{ form_end(delete_form) }}
+     </li>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'back.html.twig' %}
+
+{% block content %}
+    <h3>Customer creation</h3>
+
+    {{ form_start(form) }}
+    <div class="form-group">
+          {{ form_row(form.username, {'attr': { 'class': 'form-control' }}) }} 
+       </div>
+
+        <div class="form-group">
+         {{ form_row(form.email, {'attr': { 'class': 'form-control' }}) }}  
+       </div>
+
+
+
+       
+       <div class="form-group">
+      {{ form_row(form.registrationDate, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+        <div class="form-group">
+         {{ form_row(form.orders, {'attr': { 'class': 'form-control' }}) }}  
+       </div>
+
+
+        {{ form_widget(form) }}
+        <input class="btn btn-primary" type="submit" value="Create" />
+        <a class="btn btn-default" href="{{ path('admin_customer_index') }}">Retour</a>
+    {{ form_end(form) }}
+
+  
+
+      
+{% endblock %}
